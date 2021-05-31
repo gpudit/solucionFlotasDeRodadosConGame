@@ -1,0 +1,44 @@
+import rodados.*
+import dependencia.*
+
+test "test de dependencias" 
+	{
+	const deportes = new Dependencia(cantidadDeEmpleados = 45)
+	const cultura = new Dependencia(cantidadDeEmpleados = 31)
+	var cachito = new ChevroletCorsa(color = "rojo")
+	var corsaAzul = new ChevroletCorsa(color = "azul")
+	var corsaVerde= new ChevroletCorsa(color = "verde")
+	var kwidConGnc1 = new RenaultKwid(tieneGnc = true)
+	var autoEspecial1 = new AutosEspeciales(capacidad = 5, velocidadMaxima = 160, peso = 1200, color ="beige")
+	var kwidConGnc2 = new RenaultKwid(tieneGnc = true)
+	var kwidConGnc3 = new RenaultKwid(tieneGnc = true)
+	var kwidSinGnc1 = new RenaultKwid(tieneGnc = false)
+	
+	//Deportes
+	deportes.agregarAFlota(cachito)
+	deportes.agregarAFlota(corsaAzul)
+	deportes.agregarAFlota(corsaVerde)
+	deportes.agregarAFlota(kwidConGnc1)
+	deportes.agregarAFlota(autoEspecial1)
+	assert.equals(6450, deportes.pesoTotalFlota())
+	assert.equals(true, deportes.estaBienEquipada())
+	assert.equals(7, deportes.capacidadTotalEnColor("azul"))
+	assert.equals("beige", deportes.colorDelRodadoMasRapido())
+	assert.equals(true, deportes.esGrande())
+	assert.equals(25, deportes.capacidadFaltante())
+	
+	//Cultura
+	cultura.agregarAFlota(cachito)
+	cultura.agregarAFlota(kwidConGnc2)
+	cultura.agregarAFlota(kwidConGnc3)
+	cultura.agregarAFlota(kwidSinGnc1)
+	trafic.motor(motorBataton)
+	trafic.interior(interiorPopular)
+	cultura.agregarAFlota(trafic)
+	assert.equals(10700, cultura.pesoTotalFlota())
+	assert.equals(false, cultura.estaBienEquipada())
+	assert.equals(10, cultura.capacidadTotalEnColor("azul"))
+	assert.equals("rojo", cultura.colorDelRodadoMasRapido())
+	assert.equals(false, cultura.esGrande())
+	assert.equals(5, cultura.capacidadFaltante())
+	}

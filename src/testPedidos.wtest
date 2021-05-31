@@ -1,0 +1,16 @@
+import rodados.*
+import dependencia.*
+import pedidos.*
+
+test "test de Pedidos" 
+	{
+	const pedido1 = new Pedidos(distancia = 960, tiempoMaximo = 8, cantidadDePasajeros = 4, coloresIncompatibles = ["azul", "negro"])
+	var cachito = new ChevroletCorsa(color = "rojo")
+	assert.equals(true, pedido1.satisfacePedido(cachito))
+	const pedido2 = new Pedidos(distancia = 960, tiempoMaximo = 8, cantidadDePasajeros = 4, coloresIncompatibles = ["azul", "negro", "rojo"])
+	assert.equals(false, pedido2.satisfacePedido(cachito))
+	const pedido3 = new Pedidos(distancia = 960, tiempoMaximo = 8, cantidadDePasajeros = 6, coloresIncompatibles = ["azul", "negro"])
+	assert.equals(false, pedido3.satisfacePedido(cachito))
+	const pedido4 = new Pedidos(distancia = 960, tiempoMaximo = 6, cantidadDePasajeros = 4, coloresIncompatibles = ["azul", "negro"])
+	assert.equals(false, pedido4.satisfacePedido(cachito))
+	}

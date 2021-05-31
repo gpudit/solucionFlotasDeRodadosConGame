@@ -1,7 +1,23 @@
 import wollok.game.*
+import rodados.*
 
-program corsasEnElGame {
-	// hacer las inicializaciones necesarias 
-	
-	game.start()
-}
+const corsa = new ChevroletCorsa(color = "rojo")
+
+program corsasEnElGame
+	{
+		game.title("Corsa En Flota de Rodados")
+		game.height(15)
+		game.width(15)
+		game.ground("tierra.png")
+		game.addVisual(corsa)
+		keyboard.r().onPressDo{ corsa.cambiarAColorRojo() }
+		keyboard.a().onPressDo{ corsa.cambiarAColorAzul() }
+		keyboard.v().onPressDo{ corsa.cambiarAColorVerde() }
+		keyboard.right().onPressDo{ corsa.moverDerecha() }
+		keyboard.left().onPressDo{ corsa.moverIzquierda() }
+		keyboard.up().onPressDo{ corsa.moverArriba() }
+		keyboard.down().onPressDo{ corsa.moverAbajo() }
+		keyboard.p().onPressDo{ game.say(corsa, (corsa.pasoPor()).toString())}
+		game.start()
+		
+	}
